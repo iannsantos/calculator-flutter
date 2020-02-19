@@ -9,38 +9,55 @@ part of 'home_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeController on _HomeBase, Store {
-  final _$resultAtom = Atom(name: '_HomeBase.result');
+  final _$number1Atom = Atom(name: '_HomeBase.number1');
 
   @override
-  double get result {
-    _$resultAtom.context.enforceReadPolicy(_$resultAtom);
-    _$resultAtom.reportObserved();
-    return super.result;
+  double get number1 {
+    _$number1Atom.context.enforceReadPolicy(_$number1Atom);
+    _$number1Atom.reportObserved();
+    return super.number1;
   }
 
   @override
-  set result(double value) {
-    _$resultAtom.context.conditionallyRunInAction(() {
-      super.result = value;
-      _$resultAtom.reportChanged();
-    }, _$resultAtom, name: '${_$resultAtom.name}_set');
+  set number1(double value) {
+    _$number1Atom.context.conditionallyRunInAction(() {
+      super.number1 = value;
+      _$number1Atom.reportChanged();
+    }, _$number1Atom, name: '${_$number1Atom.name}_set');
   }
 
-  final _$showResultAtom = Atom(name: '_HomeBase.showResult');
+  final _$number2Atom = Atom(name: '_HomeBase.number2');
 
   @override
-  String get showResult {
-    _$showResultAtom.context.enforceReadPolicy(_$showResultAtom);
-    _$showResultAtom.reportObserved();
-    return super.showResult;
+  double get number2 {
+    _$number2Atom.context.enforceReadPolicy(_$number2Atom);
+    _$number2Atom.reportObserved();
+    return super.number2;
   }
 
   @override
-  set showResult(String value) {
-    _$showResultAtom.context.conditionallyRunInAction(() {
-      super.showResult = value;
-      _$showResultAtom.reportChanged();
-    }, _$showResultAtom, name: '${_$showResultAtom.name}_set');
+  set number2(double value) {
+    _$number2Atom.context.conditionallyRunInAction(() {
+      super.number2 = value;
+      _$number2Atom.reportChanged();
+    }, _$number2Atom, name: '${_$number2Atom.name}_set');
+  }
+
+  final _$displayResultAtom = Atom(name: '_HomeBase.displayResult');
+
+  @override
+  String get displayResult {
+    _$displayResultAtom.context.enforceReadPolicy(_$displayResultAtom);
+    _$displayResultAtom.reportObserved();
+    return super.displayResult;
+  }
+
+  @override
+  set displayResult(String value) {
+    _$displayResultAtom.context.conditionallyRunInAction(() {
+      super.displayResult = value;
+      _$displayResultAtom.reportChanged();
+    }, _$displayResultAtom, name: '${_$displayResultAtom.name}_set');
   }
 
   final _$opAtom = Atom(name: '_HomeBase.op');
@@ -60,40 +77,57 @@ mixin _$HomeController on _HomeBase, Store {
     }, _$opAtom, name: '${_$opAtom.name}_set');
   }
 
+  final _$resultAtom = Atom(name: '_HomeBase.result');
+
+  @override
+  double get result {
+    _$resultAtom.context.enforceReadPolicy(_$resultAtom);
+    _$resultAtom.reportObserved();
+    return super.result;
+  }
+
+  @override
+  set result(double value) {
+    _$resultAtom.context.conditionallyRunInAction(() {
+      super.result = value;
+      _$resultAtom.reportChanged();
+    }, _$resultAtom, name: '${_$resultAtom.name}_set');
+  }
+
   final _$_HomeBaseActionController = ActionController(name: '_HomeBase');
 
   @override
-  void setResult(double newNumber) {
+  dynamic clearAll() {
     final _$actionInfo = _$_HomeBaseActionController.startAction();
     try {
-      return super.setResult(newNumber);
+      return super.clearAll();
     } finally {
       _$_HomeBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic setNumber(double number) {
+  dynamic setNumber(double newNumber) {
     final _$actionInfo = _$_HomeBaseActionController.startAction();
     try {
-      return super.setNumber(number);
+      return super.setNumber(newNumber);
     } finally {
       _$_HomeBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setOperator(String newOp) {
+  dynamic setOp(String newOp) {
     final _$actionInfo = _$_HomeBaseActionController.startAction();
     try {
-      return super.setOperator(newOp);
+      return super.setOp(newOp);
     } finally {
       _$_HomeBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void calculate() {
+  dynamic calculate() {
     final _$actionInfo = _$_HomeBaseActionController.startAction();
     try {
       return super.calculate();
@@ -103,19 +137,9 @@ mixin _$HomeController on _HomeBase, Store {
   }
 
   @override
-  void convertDoubleToString(double number) {
-    final _$actionInfo = _$_HomeBaseActionController.startAction();
-    try {
-      return super.convertDoubleToString(number);
-    } finally {
-      _$_HomeBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     final string =
-        'result: ${result.toString()},showResult: ${showResult.toString()},op: ${op.toString()}';
+        'number1: ${number1.toString()},number2: ${number2.toString()},displayResult: ${displayResult.toString()},op: ${op.toString()},result: ${result.toString()}';
     return '{$string}';
   }
 }

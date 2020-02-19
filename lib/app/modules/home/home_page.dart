@@ -30,9 +30,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               children: <Widget>[
                 RaisedButton(
                   onPressed: () {
-                    controller.setResult(0);
-                    controller.convertDoubleToString(0);
-                    controller.setNumber(null);
+                    controller.clearAll();
                   },
                   child: Text(
                     "C",
@@ -41,7 +39,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 Observer(
                   builder: (_) {
                     return Text(
-                      controller.showResult,
+                      controller.displayResult,
                     );
                   },
                 ),
@@ -51,8 +49,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               children: <Widget>[
                 RaisedButton(
                   onPressed: () {
-                    controller.convertDoubleToString(7.0);
-                    controller.setNumber(7.0);
+                    controller.setNumber(7);
                   },
                   child: Text(
                     "7",
@@ -60,22 +57,23 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 ),
                 RaisedButton(
                   onPressed: () {
-                    controller.convertDoubleToString(8.0);
-                    controller.setNumber(8.0);
+                    controller.setNumber(8);
                   },
                   child: Text(
                     "8",
                   ),
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setNumber(9);
+                  },
                   child: Text(
                     "9",
                   ),
                 ),
                 RaisedButton(
                   onPressed: () {
-                    controller.setOperator("+");
+                    controller.setOp("+");
                   },
                   child: Text(
                     "+",
@@ -86,25 +84,33 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             Row(
               children: <Widget>[
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setNumber(4);
+                  },
                   child: Text(
                     "4",
                   ),
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setNumber(5);
+                  },
                   child: Text(
                     "5",
                   ),
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setNumber(6);
+                  },
                   child: Text(
                     "6",
                   ),
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setOp("-");
+                  },
                   child: Text(
                     "-",
                   ),
@@ -114,25 +120,33 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             Row(
               children: <Widget>[
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setNumber(1);
+                  },
                   child: Text(
                     "1",
                   ),
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setNumber(2);
+                  },
                   child: Text(
                     "2",
                   ),
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setNumber(3);
+                  },
                   child: Text(
                     "3",
                   ),
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setOp("*");
+                  },
                   child: Text(
                     "*",
                   ),
@@ -142,7 +156,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             Row(
               children: <Widget>[
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setNumber(0);
+                  },
                   child: Text(
                     "0",
                   ),
@@ -162,7 +178,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   ),
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.setOp("/");
+                  },
                   child: Text(
                     "/",
                   ),

@@ -6,61 +6,116 @@ class HomeController = _HomeBase with _$HomeController;
 
 abstract class _HomeBase with Store {
   @observable
-  double result = 0;
-  String _n1;
-  String _n2;
+  double number1;
 
   @observable
-  String showResult = "0";
+  double number2;
+
+  // start
+  @observable
+  String displayResult = "0";
 
   @observable
   String op;
 
-  @action
-  void setResult(double newNumber) {
-    result = newNumber;
-    print("result $result");
+  @observable
+  double result;
+
+  printForDebug() {
+    print("-------------------\n" +
+        "displayResult $displayResult\n" +
+        "number1 $number1\n" +
+        "op $op\n" +
+        "number2 $number2\n" +
+        "result $result\n" +
+        "-------------------\n");
   }
 
-  @action
-  setNumber(double number) {
-    if (_n1 == null) {
-      _n1 = number.toString();
-    } else if (op == null) {
-      _n1 += number.toString();
-    } else if (_n2 == null) {
-      _n2 = number.toString();
-    } else {
-      _n2 += number.toString();
-    }
-  }
-
-  @action
-  void setOperator(String newOp) {
-    op = newOp;
-    print("op $op");
-  }
-
-  @action
-  void calculate() {
-    switch (op) {
-      case "+":
-        result = double.parse(_n1) + double.parse(_n2);
-        convertDoubleToString(result);
-        _n1 = result.toString();
-        op = null;
-        break;
-      default:
-    }
-  }
-
-  @action
-  void convertDoubleToString(double number) {
+  checkIfDoubleConvertToString(double number) {
     List splitedNumber = number.toString().split('.');
     if (splitedNumber[1] == '0') {
-      showResult = splitedNumber[0].toString();
+      return splitedNumber[0];
     } else {
-      showResult = number.toString();
+      return number;
+    }
+  }
+
+  @action
+  clearAll() {
+    displayResult = "0";
+    number1 = null;
+    number2 = null;
+    op = null;
+    printForDebug();
+  }
+
+  @action
+  setNumber(double newNumber) {
+    if (number1 == null && op == null) {
+      displayResult = checkIfDoubleConvertToString(newNumber).toString();
+      number1 = double.parse(displayResult);
+      printForDebug();
+    } else if (number2 == null && number1 != null && op != null) {
+      displayResult = checkIfDoubleConvertToString(newNumber).toString();
+      number2 = double.parse(displayResult);
+      printForDebug();
+    } else if (number1 != null && op == null) {
+      displayResult += checkIfDoubleConvertToString(newNumber).toString();
+      number1 = double.parse(displayResult);
+      printForDebug();
+    } else if (number2 != null && op != null) {
+      displayResult += checkIfDoubleConvertToString(newNumber).toString();
+      number2 = double.parse(displayResult);
+      printForDebug();
+    }
+  }
+
+  @action
+  setOp(String newOp) {
+    op = newOp;
+    printForDebug();
+  }
+
+  @action
+  calculate() {
+    switch (op) {
+      case "+":
+        result = number1 + number2;
+        displayResult = checkIfDoubleConvertToString(result).toString();
+        number1 = result;
+        number2 = null;
+        op = null;
+        result = null;
+        printForDebug();
+        break;
+      case "-":
+        result = number1 - number2;
+        displayResult = checkIfDoubleConvertToString(result).toString();
+        number1 = result;
+        number2 = null;
+        op = null;
+        result = null;
+        printForDebug();
+        break;
+      case "*":
+        result = number1 * number2;
+        displayResult = checkIfDoubleConvertToString(result).toString();
+        number1 = result;
+        number2 = null;
+        op = null;
+        result = null;
+        printForDebug();
+        break;
+      case "/":
+        result = number1 / number2;
+        displayResult = checkIfDoubleConvertToString(result).toString();
+        number1 = result;
+        number2 = null;
+        op = null;
+        result = null;
+        printForDebug();
+        break;
+      default:
     }
   }
 }
