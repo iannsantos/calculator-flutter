@@ -12,9 +12,9 @@ class ButtonOperatorWidget extends StatelessWidget {
     HomeController controller = Modular.get();
 
     return Container(
-      width: 75,
-      height: 75,
-      margin: EdgeInsets.all(10),
+      width: MediaQuery.of(context).size.width * 20 / 100,
+      height: MediaQuery.of(context).size.width * 20 / 100,
+      margin: EdgeInsets.all(MediaQuery.of(context).size.width * 2.5 / 100),
       child: RaisedButton(
         onPressed: () {
           if (op == "C") {
@@ -34,7 +34,7 @@ class ButtonOperatorWidget extends StatelessWidget {
         child: Text(
           op,
           style: TextStyle(
-            fontSize: 18,
+            fontSize: MediaQuery.of(context).size.width * 6 / 100,
             color: Color(0xff6cacc5),
           ),
         ),

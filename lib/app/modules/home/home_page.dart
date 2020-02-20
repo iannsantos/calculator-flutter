@@ -33,9 +33,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             ],
           ),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 30),
+        padding: EdgeInsets.symmetric(
+          vertical: 15,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
