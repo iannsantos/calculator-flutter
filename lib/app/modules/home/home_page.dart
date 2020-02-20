@@ -33,7 +33,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             ],
           ),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
@@ -41,6 +41,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Container(
+                  margin: EdgeInsets.only(right: 10),
                   child: Observer(
                     builder: (_) {
                       return Text(
