@@ -21,9 +21,12 @@ abstract class _HomeBase with Store {
   @observable
   double result;
 
+  bool negativeNumber = false;
+
   printForDebug() {
     print("-------------------\n" +
         "displayResult $displayResult\n" +
+        "negativeNumber $negativeNumber\n" +
         "number1 $number1\n" +
         "op $op\n" +
         "number2 $number2\n" +
@@ -43,6 +46,7 @@ abstract class _HomeBase with Store {
   @action
   clearAll() {
     displayResult = "0";
+    negativeNumber = false;
     number1 = null;
     number2 = null;
     op = null;
@@ -52,12 +56,24 @@ abstract class _HomeBase with Store {
   @action
   setNumber(double newNumber) {
     if (number1 == null && op == null) {
-      displayResult = checkIfDoubleConvertToString(newNumber).toString();
-      number1 = double.parse(displayResult);
+      if (negativeNumber) {
+        displayResult =
+            "-" + checkIfDoubleConvertToString(newNumber).toString();
+        number1 = double.parse(displayResult);
+      } else {
+        displayResult = checkIfDoubleConvertToString(newNumber).toString();
+        number1 = double.parse(displayResult);
+      }
       printForDebug();
     } else if (number2 == null && number1 != null && op != null) {
-      displayResult = checkIfDoubleConvertToString(newNumber).toString();
-      number2 = double.parse(displayResult);
+      if (negativeNumber) {
+        displayResult =
+            "-" + checkIfDoubleConvertToString(newNumber).toString();
+        number2 = double.parse(displayResult);
+      } else {
+        displayResult = checkIfDoubleConvertToString(newNumber).toString();
+        number2 = double.parse(displayResult);
+      }
       printForDebug();
     } else if (number1 != null && op == null) {
       displayResult += checkIfDoubleConvertToString(newNumber).toString();
@@ -72,7 +88,26 @@ abstract class _HomeBase with Store {
 
   @action
   setOp(String newOp) {
-    op = newOp;
+    // setando o number1 como negativo
+    if (number1 == null && number2 == null && newOp == "-" && op == null) {
+      displayResult = "-";
+      negativeNumber = true;
+    }
+    // setando o number2 como negativo
+    else if (number1 != null &&
+        number2 == null &&
+        newOp == "-" &&
+        op != null &&
+        op != "+" &&
+        op != "-") {
+      displayResult = "-";
+      negativeNumber = true;
+    }
+    // setando as operações
+    else if (number1 != null && number2 == null) {
+      op = newOp;
+      negativeNumber = false;
+    }
     printForDebug();
   }
 
