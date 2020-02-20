@@ -1,3 +1,5 @@
+import 'package:calculator/app/modules/home/components/button_number_widget.dart';
+import 'package:calculator/app/modules/home/components/button_operator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -5,8 +7,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
-  final String title;
-  const HomePage({Key key, this.title = "Home"}) : super(key: key);
+  const HomePage({Key key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -20,170 +21,108 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xff20032B),
+              Color(0xff68048C),
+              Color(0xff58002B),
+            ],
+          ),
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                RaisedButton(
-                  onPressed: () {
-                    controller.clearAll();
-                  },
-                  child: Text(
-                    "C",
-                  ),
-                ),
-                Observer(
-                  builder: (_) {
-                    return Text(
-                      controller.displayResult,
-                    );
-                  },
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                RaisedButton(
-                  onPressed: () {
-                    controller.setNumber(7);
-                  },
-                  child: Text(
-                    "7",
-                  ),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    controller.setNumber(8);
-                  },
-                  child: Text(
-                    "8",
-                  ),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    controller.setNumber(9);
-                  },
-                  child: Text(
-                    "9",
-                  ),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    controller.setOp("+");
-                  },
-                  child: Text(
-                    "+",
+                Container(
+                  child: Observer(
+                    builder: (_) {
+                      return Text(
+                        controller.displayResult,
+                        style: TextStyle(
+                          color: Color(0xffc97874),
+                          fontSize: 44,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
             ),
             Row(
               children: <Widget>[
-                RaisedButton(
-                  onPressed: () {
-                    controller.setNumber(4);
-                  },
-                  child: Text(
-                    "4",
-                  ),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    controller.setNumber(5);
-                  },
-                  child: Text(
-                    "5",
-                  ),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    controller.setNumber(6);
-                  },
-                  child: Text(
-                    "6",
-                  ),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    controller.setOp("-");
-                  },
-                  child: Text(
-                    "-",
-                  ),
+                ButtonOperatorWidget(
+                  op: "C",
                 ),
               ],
             ),
             Row(
               children: <Widget>[
-                RaisedButton(
-                  onPressed: () {
-                    controller.setNumber(1);
-                  },
-                  child: Text(
-                    "1",
-                  ),
+                ButtonNumberWidget(
+                  number: 7,
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    controller.setNumber(2);
-                  },
-                  child: Text(
-                    "2",
-                  ),
+                ButtonNumberWidget(
+                  number: 8,
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    controller.setNumber(3);
-                  },
-                  child: Text(
-                    "3",
-                  ),
+                ButtonNumberWidget(
+                  number: 9,
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    controller.setOp("*");
-                  },
-                  child: Text(
-                    "*",
-                  ),
-                ),
+                ButtonOperatorWidget(
+                  op: "+",
+                )
               ],
             ),
             Row(
               children: <Widget>[
-                RaisedButton(
-                  onPressed: () {
-                    controller.setNumber(0);
-                  },
-                  child: Text(
-                    "0",
-                  ),
+                ButtonNumberWidget(
+                  number: 4,
                 ),
-                RaisedButton(
-                  onPressed: () {},
-                  child: Text(
-                    ".",
-                  ),
+                ButtonNumberWidget(
+                  number: 5,
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    controller.calculate();
-                  },
-                  child: Text(
-                    "=",
-                  ),
+                ButtonNumberWidget(
+                  number: 6,
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    controller.setOp("/");
-                  },
-                  child: Text(
-                    "/",
-                  ),
+                ButtonOperatorWidget(
+                  op: "-",
+                )
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                ButtonNumberWidget(
+                  number: 1,
+                ),
+                ButtonNumberWidget(
+                  number: 2,
+                ),
+                ButtonNumberWidget(
+                  number: 3,
+                ),
+                ButtonOperatorWidget(
+                  op: "*",
+                )
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                ButtonOperatorWidget(
+                  op: ".",
+                ),
+                ButtonNumberWidget(
+                  number: 0,
+                ),
+                ButtonOperatorWidget(
+                  op: "=",
+                ),
+                ButtonOperatorWidget(
+                  op: "/",
                 ),
               ],
             ),
