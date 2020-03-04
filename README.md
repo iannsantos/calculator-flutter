@@ -14,8 +14,6 @@ Calculator Flutter
   <img src="presentation2.png" alt="presentation2" height="425">
 </div>
 
-<hr />
-
 ## Features
 This app features all the latest tools and practices in mobile development!
 
