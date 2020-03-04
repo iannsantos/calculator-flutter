@@ -1,7 +1,7 @@
+<div align="center"
+<img src="calculator.png" alt="Calculator Flutter" width="80">
+<div />
 <h1 align="center">
-<br>
-  <img src="calculator.png" alt="Calculator Flutter" width="120">
-<br>
 <br>
 Calculator Flutter
 </h1>
